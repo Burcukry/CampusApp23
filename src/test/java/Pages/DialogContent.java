@@ -37,7 +37,7 @@ public class DialogContent extends MyMethods {
     @FindBy(xpath="//span[text()='Save']")
     public WebElement SaveButton;
 
-    @FindBy(xpath= "//div[contains(text(),'successfully']")
+    @FindBy(xpath= "//div[@class='hot-toast-message']/div")
     public WebElement SuccessMessage;
 
 

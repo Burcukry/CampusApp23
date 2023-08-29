@@ -47,6 +47,8 @@ public class _02_HRSteps {
 
     @Then("Success message should be displayed")
     public void successMessageShouldBeDisplayed() {
+
+        dc.wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@class='hot-toast-message']/div")));
         dc.assertText(dc.SuccessMessage, "successfully");
     }
 }
