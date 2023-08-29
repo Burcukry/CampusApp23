@@ -40,8 +40,19 @@ public class DialogContent extends MyMethods {
     @FindBy(xpath= "//div[@class='hot-toast-message']/div")
     public WebElement SuccessMessage;
 
+    @FindBy(xpath = "//div[text()=' There is no data to display ']")
+    public WebElement NoDataDisplayMessage;
 
 
+
+    @FindBy(xpath="//div[@class='hot-toast-message']//div/dynamic-view")
+    public WebElement ErrorMessage;
+
+    @FindBy(xpath="//button[@color='accent']")
+    public WebElement EditButton;
+
+    @FindBy(xpath="//div[@class='hot-toast-message']//div/dynamic-view")
+    public WebElement UpdatedMessage;
 }
 
 
