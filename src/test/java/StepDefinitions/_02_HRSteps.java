@@ -20,7 +20,6 @@ public class _02_HRSteps {
 
     @When("Navigate to Human Resources Set Up Position Categories")
     public void navigateToHumanResourcesSetUpPositionCategories() {
-        lb.clickMethod(lb.HumanResourcesButton);
         lb.clickMethod(lb.SetUpButton);
         lb.waitUntilVisible(lb.PositionsCategoriesButton);
         lb.clickMethod(lb.PositionsCategoriesButton);
@@ -82,8 +81,10 @@ public class _02_HRSteps {
 
     }
     @And("Enter same name into the text field")
-    public void enterSameNameIntoTheTextField() {
-        dc.sendKeysMethod(dc.NameButtonSecond,"Sales Manager");
+    public void enterSameNameIntoTheTextField(DataTable dataTable) {
+        dc.waitUntilVisible(dc.NameButtonSecond);
+        List<String> datalist = dataTable.asList(String.class);
+        dc.sendKeysMethod(dc.NameButtonSecond, datalist.get(0));
 
     }
 
@@ -97,6 +98,46 @@ public class _02_HRSteps {
 
     @Then("Position should be updated")
     public void positionShouldBeUpdated() {
+
         dc.assertText(dc.UpdatedMessage,"Position Category successfully updated");
     }
+
+    @And("Clear existing name into the Name text field")
+    public void clearExistingNameIntoTheNameTextField() {
+        dc.waitUntilVisible(dc.NameButtonSecond);
+        dc.NameButtonSecond.clear();
+    }
+    @Then("Position should not be updated")
+    public void positionShouldNotBeUpdated() {
+
+        dc.assertText(dc.UpdateMessageError, "This field cannot be left blank!");
+
+
+    }
+
+    @And("Click on Delete Button")
+    public void clickOnDeleteButton() {
+        dc.wait.until(ExpectedConditions.numberOfElementsToBe(By.xpath("//button[@color='warn']"),1));
+        dc.clickMethod(dc.DeleteButton);
+
+    }
+    @And("Click on DeleteClick Button")
+    public void clickOnDeleteClickButton() {
+        dc.clickMethod(dc.DeleteButtonClick);
+    }
+    @And("Click on Cancel Button")
+    public void clickOnCancelButton() {
+        dc.clickMethod(dc.CancelButton);
+
+    }
+
+    @Then("User should be able to see the existing name in position categories")
+    public void userShouldBeAbleToSeeTheExistingNameInPositionCategories(DataTable dataTable) {
+        dc.waitUntilVisible(dc.NameButtonSecond);
+        List<String> datalist = dataTable.asList(String.class);
+        dc.sendKeysMethod(dc.NameButtonSecond, datalist.get(0));
+    }
+
+
 }
+

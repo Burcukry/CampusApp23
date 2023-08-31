@@ -53,6 +53,27 @@ public class DialogContent extends MyMethods {
 
     @FindBy(xpath="//div[@class='hot-toast-message']//div/dynamic-view")
     public WebElement UpdatedMessage;
+
+    @FindBy(xpath = "//mat-error[text()=' This field cannot be left blank!']")
+    public WebElement UpdateMessageError;
+
+    @FindBy (xpath="//button[@color='warn']")
+    public WebElement DeleteButton;
+
+
+    @FindBy(xpath="//span[normalize-space()='Delete']")
+    public WebElement DeleteButtonClick;
+
+    @FindBy(xpath="//span[normalize-space()='Cancel']")
+    public WebElement CancelButton;
+
+    @FindBy(xpath = "(//td[@role='cell'])[2]")
+    public WebElement SamePositionVisible;
+
+    @FindBy(xpath="//div[text()='The Attestation with Name \"lesson1\" already exists.']")
+    public WebElement NotToAddAttestation;
+
+
 }
 
 

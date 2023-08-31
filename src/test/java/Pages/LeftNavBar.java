@@ -19,4 +19,7 @@ public class LeftNavBar extends MyMethods {
 
     @FindBy(xpath = "(//span[@class='nav-link-title ng-star-inserted'])[26]")
     public WebElement PositionsCategoriesButton;
+
+    @FindBy(xpath="//span[text()='Attestations']")
+    public WebElement AttestationsButton;
 }
